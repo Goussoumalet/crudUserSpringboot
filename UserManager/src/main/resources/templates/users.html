@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+      <meta charset="UTF-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+       <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+       <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	   <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+      
+       
+       <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+       
+		
+        <title> user list </title>
+        
+    </head>
+       
+    <style>
+		body {
+			padding-top: 60px;
+			padding-bottom: 40px;
+			background-color:cornflowerblue;
+		}
+		
+	.thead-dark{
+		background-color: black;
+	}	
+	
+	.content{
+	color:white;
+	font-size: 1.5em;
+	}
+	
+	.lien{
+		color: red;
+		font-size: 1.em;
+	}
+	</style>
+    
+        
+ <body>            
+		   <nav class="navbar navbar-inverse navbar-fixed-top">
+				  <div class="container-fluid">
+			        <div class="navbar-header">
+				          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					            <span class="sr-only">Toggle navigation</span>
+					            <span class="icon-bar"></span>
+					            <span class="icon-bar"></span>
+				                <span class="icon-bar"></span>
+				          </button>
+				          
+			                <a class="navbar-brand" href="#">User registration</a>
+					
+							<div class="container">
+							          <div id="navbar" class="navbar-collapse collapse">
+								           <ul class="nav navbar-nav navbar-right">
+									            <li><a href="/form_register">REGISTER</a></li>
+									            <li><a href="/logout">SIGN OUT</a></li>
+									            <li class="help">
+									              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+									                 aria-expanded="false">HELP <span class="caret"></span></a>
+									              <ul class="dropdown-menu">
+									                <li><a href="#">Action</a></li>
+									                <li><a href="#">Another action</a></li>
+									                <li><a href="#">Something else here</a></li>
+									                <li role="separator" class="divider"></li>
+									                <li><a href="#">Separated link</a></li>
+									                <li><a href="#">One more separated link</a></li>
+									              </ul>
+									            </li>
+						                   </ul>
+								    </div>
+						      </div>
+						   
+						      
+					</div>
+					  
+			   </nav>
+			   
+			    <div>
+					<ul class="lien">
+						<li> <a href="/" style="color: red;"> Retour Accueil </a> </li >
+						
+					</ul >
+	           </div>
+			  
+		        <div class="container text-center">
+				    
+					    <div class ="content">
+					       <p> 
+					         <b>Hello! &nbsp[[${#request.userPrincipal.principal.fullName}]]</b>
+					       </p >
+					      
+					        <h1>List of Users</h1>
+					    </div >
+				     
+				    <div>
+				        <table class="table table-striped table-bordered">
+					            <thead class="thead-dark">
+					                <tr>
+					                    <th style="color: white;">User ID</th >
+					                    <th style="color: white;">First Name</th >
+					                    <th style="color: white;">Last Name</th >
+					                    <th style="color: white;">E-mail</th > 
+					                    <th style="color: white;">Action</th >             
+					                </tr>
+					            </thead>
+					            <tbody>
+					                <tr th:each="user: ${listUsers}">
+					                    <td th:text="${user.id}">User ID</td>
+					                    <td th:text="${user.firstName}">First Name</td>
+					                    <td th:text="${user.lastName}">Last Name</td>
+					                    <td th:text="${user.email}">E-mail</td>
+					                    <td>
+							                <a th:href="@{'/updateUser/' +${user.id}}"><button
+									          class="btn btn-info">UpDate</button></a>
+							                 <a th:href="@{'/deleteUser/' +${user.id}}"><button
+									          class="btn btn-danger">Delete</button></a>
+						               </td>
+					                    
+					                </tr>
+					            </tbody>
+				        </table>
+				        
+				    </div>
+               </div>
+			      
+				 
+			    
+			     
+   </body>
+  
+</html >

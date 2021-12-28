@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--<link rel="stylesheet" type="text/css" href="style.css" /> -->
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+
+	<title> Home </title>
+
+<style>
+	body {
+		padding-top: 60px;
+		padding-bottom: 40px;
+		background-color:cornflowerblue;
+	}
+	.form-signin {
+		max-width: 500px;
+		padding: 19px 29px 29px;
+		margin: 0 auto 20px;
+		background-color: #fff;
+		border: 1px solid #e5e5e5;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0.05);
+		-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+		box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+	}
+
+.form-signin, .form-signin-heading, .form-signin {
+	margin-bottom: 10px;
+}
+
+.form-signin input[type="password"], .form-signin input[type="email"] {
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 7px 9px;
+}
+     			
+</style>
+
+
+
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<a class="navbar-brand" href="#">User registration</a>
+
+				<div class="container">
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/list_users">LIST OF USER</a></li>
+							<li class="help">
+				              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+				                 aria-expanded="false">HELP <span class="caret"></span></a>
+				              <ul class="dropdown-menu">
+				                <li><a href="#">Action</a></li>
+				                <li><a href="#">Another action</a></li>
+				                <li><a href="#">Something else here</a></li>
+				                <li role="separator" class="divider"></li>
+				                <li><a href="#">Separated link</a></li>
+				                <li><a href="#">One more separated link</a></li>
+				              </ul>
+				            </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+	</nav>
+
+	<div >
+		<ul >
+			<li> <a href="/" style="color: red;"> Retour Accueil </a> </li>
+		</ul >
+	</div  >
+
+	<div class="container text-center">
+		<form th:action="@{/process_register}" method="POST" th:object="${user}" class="form-signin"  >
+			<h2 class="form-signin-heading">User Registration</h2>
+			<label  class="sr-only">FirstName</label>
+			<input type="text"  th:field="*{firstName}" class="form-control" placeholder="FirstName" required autofocus />
+			</br>
+			<label  class="sr-only">LastName</label>
+			<input type="text" th:field="*{lastName}" class="form-control" placeholder="LastName" required />
+			</br>
+			<label  class="sr-only">Email</label>
+			<input type="email" th:field="*{email}" class="form-control" placeholder="Email address" required autofocus />
+			</br>
+			<label  class="sr-only">Password</label>
+			<input type="password" th:field="*{password}" class="form-control" placeholder="Password" required
+			    minlength="6" maxlength="20" />
+			</br>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		</form>
+	</div>
+              
+         
+	    
+</body>
+
+</html>
